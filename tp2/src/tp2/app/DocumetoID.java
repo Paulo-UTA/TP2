@@ -5,16 +5,27 @@ import java.io.Serializable;
 public class DocumetoID implements Serializable {
     private final String codigo;
     private final TipoDocumento tipo;
+    
+    private TipoDocumento gerarTipo(String doc){
+        if(doc.equalsIgnoreCase("BI"))
+            tipo = TipoDocumento.BI;  
 
-    public DocumetoID(String codigo, TipoDocumento tipo){
-        this.codigo = codigo;
-        this.tipo = tipo;
-    }
+            else if(doc.equalsIgnoreCase("PASSAPORTE"))
+            tipo = TipoDocumento.PASSAPORTE;
 
-    public DocumetoID(DocumetoID doc){
-        this.codigo = doc.codigo;
-        this.tipo = doc.tipo;
-    }
+            else if(doc.equalsIgnoreCase("CUC"))
+            tipo = TipoDocumento.CUC; 
+
+            else if(doc.equalsIgnoreCase("TRE"))
+            tipo = TipoDocumento.TRE;  
+
+            else {System.out.println("Documento Invalido");
+                    System.exit(0);
+            }
+
+            return tipo;
+    
+
 
     public String getCodigo(){
         return codigo;
